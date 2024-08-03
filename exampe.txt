@@ -1,0 +1,64 @@
+''' from tkinter import *
+from tkinter import ttk
+from tkinter import messagebox
+
+
+class App(Frame):
+   def __init__(self, screen):
+       super().__init__(screen)
+       self.master = screen
+       self.CreateWedget()
+       self.TakedataCustomer()
+       self.TakedataPersonnel()
+
+   def TakedataCustomer(self):
+       # فرض بر این است که اطلاعات مشتری از منبع داده‌ای خوانده می‌شود
+       pass
+
+   def TakedataPersonnel(self):
+       # فرض بر این است که اطلاعات پرسنل از منبع داده‌ای خوانده می‌شود
+       pass
+
+   def CreateWedget(self):
+       # ایجاد ویجت‌ها
+       self.NameCustomerstr = StringVar()
+       self.FamilyCustomerstr = StringVar()
+       self.PhoneCustomerstr = StringVar()
+
+       # تنظیمات جدول مشتری
+       col2 = ("c1", "c2", "c3")
+       self.TblCustomer = ttk.Treeview(self.master, columns=col2, show="headings", height=12)
+       self.TblCustomer.place(x=45, y=50)
+
+       self.TblCustomer.column("#3", width=100, anchor=S)
+       self.TblCustomer.heading("#3", text="نام")
+
+       self.TblCustomer.column("#2", width=200, anchor=S)
+       self.TblCustomer.heading("#2", text="نام خانوادگی")
+
+       self.TblCustomer.column("#1", width=200, anchor=S)
+       self.TblCustomer.heading("#1", text="شماره تلفن")
+
+       self.TblCustomer.bind("<ButtonRelease-1>", self.getselection)  # استفاده از bind
+
+       # سایر تنظیمات ویجت‌ها و فریم‌ها
+
+   def getselection(self, event):
+       select_row = self.TblCustomer.selection()
+       if select_row:
+           select_item = self.TblCustomer.item(select_row[0])["values"]
+           self.NameCustomerstr.set(select_item[2])
+           self.FamilyCustomerstr.set(select_item[1])
+           self.PhoneCustomerstr.set(select_item[0])
+
+   def insertCustomer(self, value):
+       self.TblCustomer.insert('', "end", text="1", value=[value[2], value[1], value[0]])
+
+   # سایر متدهای کلاس
+
+
+# مثال برای راه‌اندازی برنامه
+if __name__ == "__main__":
+   root = Tk()
+   app = App(root)
+   root.mainloop()'''
